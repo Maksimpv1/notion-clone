@@ -1,3 +1,4 @@
+"use client"
 import React, { useTransition } from 'react'
 import { Button } from './button'
 import { useRouter } from 'next/navigation'
@@ -15,7 +16,7 @@ function NewDocumentButton() {
   }
 
   return (
-       <Button onClick={handleCreateNewDocument}  disabled={!isPending}>{isPending ? "Creating... ":"New Document"}</Button>  
+       <Button onClick={handleCreateNewDocument}  disabled={isPending}>{isPending ? "Creating... ":"New Document"}</Button>  
   )
 }
 
