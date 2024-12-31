@@ -14,7 +14,7 @@ import {
 function Breadcrumbs() {
     const path = usePathname()
 
-    const segments = path.split('/');
+    const segments = path.split('/').filter(item=> item !== '');
 
   return (
     <Breadcrumb>
