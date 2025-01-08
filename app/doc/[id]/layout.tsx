@@ -1,11 +1,11 @@
+import RoomProvider from '@/components/RoomProvider'
 import { auth } from '@clerk/nextjs/server'
-import { RoomProvider } from '@liveblocks/react'
 import React from 'react'
 
-function DocLayout({children,params} : {children: React.ReactNode, params: {id:string}}) {
+function DocLayout({children,params: {id}} : {children: React.ReactNode, params: {id:string}}) {
     auth.protect()
   return (
-    <RoomProvider>DocLayout</RoomProvider>
+    <RoomProvider roomId={id}>DocLayout</RoomProvider>
   )
 }
 
