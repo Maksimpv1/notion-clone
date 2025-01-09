@@ -1,9 +1,9 @@
 import { Liveblocks } from "@liveblocks/node"
 
-const key = process.env.LIVEBLOCKS_PRIVATE_KEY
+const key = process.env.LIVEBLOKCS_PRIVATE_KEY
 
 if(!key){
-    throw new Error("LIVEBLOCKS_PRIVATE_KEY is not set")
+    throw new Error("LIVEBLOKCS_PRIVATE_KEY is not set")
 }
 
 const liveblocks = new Liveblocks({

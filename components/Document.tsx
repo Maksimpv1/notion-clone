@@ -4,11 +4,15 @@ import { Button } from './ui/button';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '@/firebase';
 import { useDocumentData } from 'react-firebase-hooks/firestore';
+import useOwner from '@/lib/useOwner';
+import Editor from './Editor';
 
 function Document({id} : {id:string}) {
   const [data, loading, error] = useDocumentData(doc(db,'documents', id))
   const [input, setInput] = useState<string>('');
   const [isUpdating, startTransition] = useTransition();
+  const isOwner = useOwner();
+
   useEffect(()=>{
     if(data) {
       setInput(data.title)
@@ -38,7 +42,8 @@ function Document({id} : {id:string}) {
         <div>
             {/*Avatar*/}
         </div>
-
+        <hr className='pb-10'/>
+        <Editor />
     </div>
   )
 }

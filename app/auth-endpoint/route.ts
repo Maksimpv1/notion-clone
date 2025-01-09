@@ -30,7 +30,7 @@ export async function POST(req: NextRequest){
     }else{
         return NextResponse.json(
             {message: "You are not in this room "},
-            { status: 403}
+            {status: 403}
         )
     }
 }
