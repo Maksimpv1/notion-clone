@@ -92,7 +92,6 @@ function Sidebar() {
           ))}
         </>
       )}
-    </div>
 
       {groupedData.editor.length > 0 && (
         < >
@@ -104,7 +103,7 @@ function Sidebar() {
           ))}
         </>
       )}
-
+    </div>
     </>
   )
   return (    
