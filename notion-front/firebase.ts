@@ -8,11 +8,10 @@ const firebaseConfig = {
   projectId: "notion-clone-87a7a",
   storageBucket: "notion-clone-87a7a.firebasestorage.app",
   messagingSenderId: "474081112520",
-  appId: "1:474081112520:web:26b2601baddad1264490fd"
+  appId: "1:474081112520:web:26b2601baddad1264490fd",
 };
 
+const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApp();
+const db = getFirestore(app);
 
-const app = getApps().length === 0 ? initializeApp(firebaseConfig): getApp();
-const db = getFirestore(app)
-
-export { db  }
+export { db };
