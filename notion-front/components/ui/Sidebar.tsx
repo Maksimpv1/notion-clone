@@ -5,12 +5,11 @@ import NewDocumentButton from "./NewDocumentButton";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { Key, MenuIcon } from "lucide-react";
+import { MenuIcon } from "lucide-react";
 import { useCollection } from "react-firebase-hooks/firestore";
 import { useUser } from "@clerk/nextjs";
 import {
@@ -40,7 +39,7 @@ function Sidebar() {
     editor: [],
   });
 
-  const [data, loading, error] = useCollection(
+  const [data] = useCollection(
     user &&
       query(
         collectionGroup(db, "rooms"),

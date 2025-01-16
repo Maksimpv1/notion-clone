@@ -1,11 +1,12 @@
 import RoomProvider from "@/components/RoomProvider";
 import { auth } from "@clerk/nextjs/server";
 import React, { ReactNode } from "react";
+interface Params {
+  id: string; 
+}
 interface DocLayoutProps {
   children: ReactNode;
-  params: {
-    id: string;
-  };
+  params: Promise<Params>; 
 }
 
 async function DocLayout({ children, params }: DocLayoutProps) {

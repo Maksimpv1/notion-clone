@@ -3,10 +3,8 @@
 import React, { FormEvent, useState, useTransition } from "react";
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -53,7 +51,7 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [language, setLanguage] = useState<string>("");
   const [summary, setSummary] = useState<string>("");
-  const [question, setQuestion] = useState<string>("");
+  //const [question, setQuestion] = useState<string>("");
   const [isPending, startTransition] = useTransition();
 
   const handleAskQuestion = (e: FormEvent) => {
@@ -96,7 +94,7 @@ function TranslateDocument({ doc }: { doc: Y.Doc }) {
             the selected language.
           </DialogDescription>
           <hr className="mt-5" />
-          {question && <p className="mt-5 text-gray-500">Q: {question}</p>}
+          {/*question && <p className="mt-5 text-gray-500">Q: {question}</p>*/}
         </DialogHeader>
 
         {summary && (
