@@ -9,7 +9,7 @@ const serviceKey:ServiceAccount = {
   clientEmail: "firebase-adminsdk-1h5yv@notion-clone-87a7a.iam.gserviceaccount.com",
   privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n')!,
 };
-
+//\\n
 if (getApps().length === 0) {
   app = initializeApp({
     credential: cert(serviceKey),
