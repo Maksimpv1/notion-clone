@@ -10,8 +10,6 @@ const serviceKey:ServiceAccount = {
   privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n')!,
 };
 
-const serviceKeyOne = require('./service_key.json'); 
-
 if (getApps().length === 0) {
   app = initializeApp({
     credential: cert(serviceKey),
