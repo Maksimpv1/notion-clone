@@ -5,7 +5,6 @@ import Header from "@/components/Header";
 import Sidebar from "@/components/ui/Sidebar";
 import { Toaster } from "@/components/ui/sonner";
 
-
 export const metadata: Metadata = {
   title: "Notion-clone",
 };
@@ -19,15 +18,17 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body>
-          <Header  />
+          <Header />
           <div className="flex min-h-screen">
-            <Sidebar/>
-            <div className="flex-1 p-5 bg-green-50 overflow-y-auto 
-            scrollbar-hide">
+            <Sidebar />
+            <div
+              className="flex-1 p-5 bg-green-50 overflow-y-auto 
+            scrollbar-hide"
+            >
               {children}
             </div>
           </div>
-          <Toaster position="top-center"/>
+          <Toaster position="top-center" />
         </body>
       </html>
     </ClerkProvider>

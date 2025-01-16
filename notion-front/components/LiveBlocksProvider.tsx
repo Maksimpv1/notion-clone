@@ -1,16 +1,15 @@
-'use client'
-import {LiveblocksProvider} from "@liveblocks/react/suspense"
+"use client";
+import { LiveblocksProvider } from "@liveblocks/react/suspense";
 
-const LiveBlocksProvider = ({children} : {children: React.ReactNode}) => {
-
-  if( !process.env.NEXT_PUBLIC_LIVEBLOKCS_PUBLISHABLE_KEY){
-    throw new Error("NEXT_PUBLIC_LIVEBLOKCS_PUBLISHABLE_KEY is not set")
+const LiveBlocksProvider = ({ children }: { children: React.ReactNode }) => {
+  if (!process.env.NEXT_PUBLIC_LIVEBLOKCS_PUBLISHABLE_KEY) {
+    throw new Error("NEXT_PUBLIC_LIVEBLOKCS_PUBLISHABLE_KEY is not set");
   }
   return (
     <LiveblocksProvider throttle={16} authEndpoint={"/auth-endpoint"}>
       {children}
     </LiveblocksProvider>
-  )
-}
+  );
+};
 
-export default LiveBlocksProvider
+export default LiveBlocksProvider;

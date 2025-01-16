@@ -1,10 +1,9 @@
-'use client'
+"use client";
 
-import Document from '@/components/Document'
-import React, { useEffect, useState } from 'react'
+import Document from "@/components/Document";
+import React, { useEffect, useState } from "react";
 
 function DocumentPage({ params }: { params: Promise<{ id: string }> }) {
-  
   const [id, setId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -14,7 +13,7 @@ function DocumentPage({ params }: { params: Promise<{ id: string }> }) {
   }, [params]);
 
   if (!id) {
-    return null; 
+    return null;
   }
 
   return (

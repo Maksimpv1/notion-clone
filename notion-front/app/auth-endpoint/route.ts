@@ -3,34 +3,45 @@ import liveblocks from "@/lib/liveblocks";
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest){
-    auth.protect();
+export async function POST(req: NextRequest) {
+  auth.protect();
 
-    const { sessionClaims} = await auth()
-    const { room } = await req.json()
+  const { sessionClaims } = await auth();
+  
+  if (!sessionClaims || !sessionClaims.email || !sessionClaims.fullName || !sessionClaims.image) {
+    return NextResponse.json(
+      { message: "Invalid session claims" },
+      { status: 401 }
+    );
+  }
 
-    const session = liveblocks.prepareSession(sessionClaims?.email!,{
-        userInfo: {
-            name: sessionClaims?.fullName!,
-            email: sessionClaims?.email!,
-            avatar: sessionClaims?.image!,
-        }
-    })
+  const { room } = await req.json();
 
-    const usersInRoom = await adminDb.collectionGroup("rooms").where("userId", "==" , sessionClaims?.email).get();
-    const userInRoom = usersInRoom.docs.find((doc) => doc.id === room)
+  const session = liveblocks.prepareSession(sessionClaims.email, {
+    userInfo: {
+      name: sessionClaims.fullName,
+      email: sessionClaims.email,
+      avatar: sessionClaims.image,
+    },
+  });
 
-    if(userInRoom?.exists) {
-        session.allow(room, session.FULL_ACCESS)
-        const { body, status} = await session.authorize()
+  const usersInRoom = await adminDb
+    .collectionGroup("rooms")
+    .where("userId", "==", sessionClaims.email)
+    .get();
+  const userInRoom = usersInRoom.docs.find((doc) => doc.id === room);
 
-        console.log('You are authroise')
+  if (userInRoom?.exists) {
+    session.allow(room, session.FULL_ACCESS);
+    const { body, status } = await session.authorize();
 
-        return new Response(body, {status })
-    }else{
-        return NextResponse.json(
-            {message: "You are not in this room "},
-            {status: 403}
-        )
-    }
+    console.log("You are authorized");
+
+    return new Response(body, { status });
+  } else {
+    return NextResponse.json(
+      { message: "You are not in this room" },
+      { status: 403 },
+    );
+  }
 }
