@@ -1,6 +1,7 @@
 # EN
 
 # The goal of the project is to implement cool features: Live Cursor, Implement AI, and general Notion functions.
+## Core Technologies, Clerk Auth, Firestore, Liveblocks, Cloudflare.
 
 ## Link to the project: https://notion-clone-ov4r-6ogo931hv-maksims-projects-695163e4 .vercel.app/
 
@@ -20,6 +21,7 @@
 # RU
 
 # Цель проекта реализовать прикольные фитч: Live Cursor, Внедрить AI, и общие функции Notion.
+## Основные технологии, Clerk Auth, Firestore, Liveblocks, Cloudflare.
 
 ## ССылка на проект: https://notion-clone-ov4r-6ogo931hv-maksims-projects-695163e4.vercel.app/
 
